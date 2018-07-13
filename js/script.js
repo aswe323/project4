@@ -12,11 +12,11 @@
  *			1.access !DONE!
  *			2.change class based on gameLogic.token !DONE!
  *			3.commiting move:
- *				3a. End Turn button?
- *				3b. one click and your done?
+ *				3a. End Turn button? <--- !DONE!
+ *				3b. one click and your done? <--- CANCELED
  *				!. event listeners !DONE!
  *			4.win conditions:
- *				4a. brute!
+ *--->				4a. brute!
  *
  *
  *
@@ -57,9 +57,11 @@ class logic  {
 			return
 		}else if(this.token === "o"){
 			box.setAttribute("class", "box box-filled-1");
+			box.setAttribute("claim",this.token);
 			this.nextTurn();
 		}else if(this.token === "x"){
 			box.setAttribute("class", "box box-filled-2");
+			box.setAttribute("claim",this.token);
 			this.nextTurn();
 		};
 	}
@@ -67,6 +69,8 @@ class logic  {
 	//simple switch function to change then active player element and token :)
 	//not dry enough?
 	nextTurn(){
+			//checking for a winner BEFORE switching the token :D
+		this.winner();
 		if (this.token === "x"){
 			this.token = "o";
 			this.player1.setAttribute("class","players active");
@@ -79,6 +83,53 @@ class logic  {
 			this.player1.setAttribute("class","players");
 		};
 	};
+
+	//win condition checker
+	
+	winner(){
+
+		//complete row claimed
+			//
+		if (this.rowOne[0].getAttribute("claim") === this.token && this.rowOne[1].getAttribute("claim") === this.token && this.rowOne[2].getAttribute("claim") === this.token ){
+			//PLACEHOLDER 
+			return console.log("works!");
+		}else if(this.rowTwo[0].getAttribute("claim") === this.token && this.rowTwo[1].getAttribute("claim") === this.token && this.rowTwo[2].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+		}else if(this.rowThree[0].getAttribute("claim") === this.token && this.rowThree[1].getAttribute("claim") === this.token && this.rowThree[2].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+
+
+
+
+		//comeplete horizonal.. row? claimed :)
+			//
+		}else if(this.rowOne[0].getAttribute("claim") === this.token && this.rowTwo[0].getAttribute("claim") === this.token && this.rowThree[0].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+		}else if(this.rowOne[1].getAttribute("claim") === this.token && this.rowTwo[1].getAttribute("claim") === this.token && this.rowThree[1].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+		}else if(this.rowOne[2].getAttribute("claim") === this.token && this.rowTwo[2].getAttribute("claim") === this.token && this.rowThree[2].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+
+
+
+		//diagenel claims
+			//
+		}else if(this.rowOne[0].getAttribute("claim") === this.token && this.rowTwo[1].getAttribute("claim") === this.token && this.rowThree[2].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+		}else if(this.rowOne[2].getAttribute("claim") === this.token && this.rowTwo[1].getAttribute("claim") === this.token && this.rowThree[0].getAttribute("claim") === this.token ){
+			//PLACEHOLDER
+			return console.log("works!");
+		}else{
+			return
+		}; 
+	};
+
 	
 }
 
