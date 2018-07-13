@@ -26,6 +26,17 @@
  * 
  */
 
+
+
+/*
+ *                                                right now : 
+ *                                                well. doing the hover over squres thing :P
+ *                                                maybe there is a specific event that will do the trick?
+ *                                                ...
+ *                                                well its jsut 2 more events so im wont be lazy :P
+ *
+ */
+
 class logic  {
 	constructor(token, player2, player1) {
 
@@ -34,8 +45,27 @@ class logic  {
 		this.move(clicked);
 	}
 		
+
 	);
+
+
+
+
+	document.querySelectorAll(".boxes .box").forEach((x,i) => x.addEventListener("mouseover", (event) =>{
+		console.log('in');
+		event.target.style.backgroundImage  = this.img;
+			//code	
+		}
+	));
 	
+	document.querySelectorAll(".boxes .box").forEach((x,i) => x.addEventListener("mouseleave", (event) =>{
+		event.target.style.backgroundImage = "";
+			//code	
+		}
+	));	
+
+
+		//player localvariables
 	this.player2 = document.querySelector("#player2"); // X
 	this.player1 = document.querySelector("#player1"); // O
 		
@@ -47,6 +77,8 @@ class logic  {
 	this.rowTwo = [document.querySelectorAll(".box")[3], document.querySelectorAll(".box")[4], document.querySelectorAll(".box")[5]];
 	this.rowThree = [document.querySelectorAll(".box")[6], document.querySelectorAll(".box")[7], document.querySelectorAll(".box")[8]];
 	this.token = "o";
+	this.img = 'url(../project4/img/' + this.token + '.svg)';
+		//wht?
 	}
 
 	//logic for the click event on the boxes
@@ -82,10 +114,11 @@ class logic  {
 			this.player2.setAttribute("class","players active");
 			this.player1.setAttribute("class","players");
 		};
+	this.img = 'url(../project4/img/' + this.token + '.svg)';
 	};
 
 	//win condition checker
-	
+	//not dry enough?	
 	winner(){
 
 		//complete row claimed
