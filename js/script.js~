@@ -16,7 +16,7 @@
  *				3b. one click and your done? <--- CANCELED
  *				!. event listeners !DONE!
  *			4.win conditions:
- *--->				4a. brute!
+ *				4a. brute! !DONE!
  *
  *
  *
@@ -129,6 +129,7 @@ class logic  {
 			return
 		}; 
 	};
+
 	
 }
 
