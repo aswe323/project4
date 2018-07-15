@@ -30,10 +30,11 @@
 
 /*
  *                                                right now : 
- *                                                well. doing the hover over squres thing :P
- *                                                maybe there is a specific event that will do the trick?
- *                                                ...
- *                                                well its jsut 2 more events so im wont be lazy :P
+ *                                                1.winnig screen  <--- now
+ *                                                2.enter screen <--- later?
+ *                                                3.computer opponent logic (scary) <--- 4 quears
+ *                                                4.???
+ *                                                5.profit!
  *
  */
 
@@ -50,17 +51,19 @@ class logic  {
 
 
 
+	
+	//event listeners for mouse over and mouse out of the box.`
 
 	document.querySelectorAll(".boxes .box").forEach((x,i) => x.addEventListener("mouseover", (event) =>{
-		console.log('in');
+		
+		if (event.target.getAttribute("class") !== "box box-filled-1" && event.target.getAttribute("class") !== "box box-filled-2"){
 		event.target.style.backgroundImage  = this.img;
-			//code	
+			}
 		}
 	));
 	
 	document.querySelectorAll(".boxes .box").forEach((x,i) => x.addEventListener("mouseleave", (event) =>{
 		event.target.style.backgroundImage = "";
-			//code	
 		}
 	));	
 
@@ -101,7 +104,6 @@ class logic  {
 	//simple switch function to change then active player element and token :)
 	//not dry enough?
 	nextTurn(){
-			//checking for a winner BEFORE switching the token :D
 		this.winner();
 		if (this.token === "x"){
 			this.token = "o";
@@ -158,17 +160,37 @@ class logic  {
 		}else if(this.rowOne[2].getAttribute("claim") === this.token && this.rowTwo[1].getAttribute("claim") === this.token && this.rowThree[0].getAttribute("claim") === this.token ){
 			//PLACEHOLDER
 			return console.log("works!");
-		}else{
-			return
-		}; 
+		};
+
+	//	this.rowOne.forEach((x,i)=> console.log(x.hasAttribute("claim")));   //works
+	//	this.rowTwo.forEach((x,i)=> console.log(x.hasAttribute("claim")));   //works
+	//	this.rowThree.forEach((x,i)=> console.log(x.hasAttribute("claim"))); //works
+		
+		//to change into somthing more DRY
+
+
+		if(this.rowOne[1].hasAttribute("claim") && this.rowOne[0].hasAttribute("claim")&&this.rowOne[2].hasAttribute("claim")){
+			if(this.rowTwo[1].hasAttribute("claim") && this.rowOne[0].hasAttribute("claim")&&this.rowThree[2].hasAttribute("claim")){
+				if(this.rowOne[1].hasAttribute("claim") && this.rowTwo[0].hasAttribute("claim")&&this.rowThree[2].hasAttribute("claim")){
+					//tie screen
+				}}}
+		
+	/*
+		if (this.rowOne.forEach((x,i)=> x.hasAttribute("claim"))&& this.rowTwo.forEach((x,i)=> x.hasAttribute("claim")) && this.rowThree.forEach((x,i)=> x.hasAttribute("claim"))){
+			return console.log("tie! LOSERS!"); //DONST Work ??????? 
+		};
+*/
+
+
 	};
 
 	
 }
+//game welcome screen here
 
 let gameLogic = new logic();
 
-
+//game endings fork function here
 
 
 
