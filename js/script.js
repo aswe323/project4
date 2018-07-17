@@ -37,7 +37,14 @@
  *                                                5.profit!
  *
  */
+//access to HTML elemetns:
+const board = document.querySelector(".board");
 
+
+
+
+
+//class logic for game logic
 class logic  {
 	constructor(token, player2, player1) {
 
@@ -57,7 +64,7 @@ class logic  {
 	document.querySelectorAll(".boxes .box").forEach((x,i) => x.addEventListener("mouseover", (event) =>{
 		
 		if (event.target.getAttribute("class") !== "box box-filled-1" && event.target.getAttribute("class") !== "box box-filled-2"){
-		event.target.style.backgroundImage  = this.img;
+		event.target.style.backgroundImage  = "url(" + this.img + ")";
 			}
 		}
 	));
@@ -79,9 +86,14 @@ class logic  {
 	this.rowOne = [document.querySelectorAll(".box")[0], document.querySelectorAll(".box")[1], document.querySelectorAll(".box")[2]];
 	this.rowTwo = [document.querySelectorAll(".box")[3], document.querySelectorAll(".box")[4], document.querySelectorAll(".box")[5]];
 	this.rowThree = [document.querySelectorAll(".box")[6], document.querySelectorAll(".box")[7], document.querySelectorAll(".box")[8]];
+
+		//player token identifyer
 	this.token = "o";
-	this.img = 'url(../project4/img/' + this.token + '.svg)';
-		//wht?
+
+
+		//image of the player token 
+	this.img = '../project4/img/' + this.token + '.svg';
+
 	}
 
 	//logic for the click event on the boxes
@@ -116,7 +128,7 @@ class logic  {
 			this.player2.setAttribute("class","players active");
 			this.player1.setAttribute("class","players");
 		};
-	this.img = 'url(../project4/img/' + this.token + '.svg)';
+	this.img = '../project4/img/' + this.token + '.svg';
 	};
 
 	//win condition checker
@@ -188,11 +200,36 @@ class logic  {
 }
 //game welcome screen here
 
-let gameLogic = new logic();
+
+
 
 //game endings fork function here
 
+function endingFork(){
+	toggleGameBoard("off");
+
+	let div = document.createElement("div");
+
+	div.backgroundcolor= "green";
+	let winnerImg = document.createElement("img")
+	winnerImg.setAttribute("src", gameLogic.img);
+	winnerImg.setAttribute("color","yellow");
+	div.append(winnerImg);
+	div.style.color="black";
+	document.querySelectorAll("body")[0].append(div);
+};
+
+// show or hide the game board (the element with the .board class);
+
+function toggleGameBoard(setting){
+	if (setting ==="off"){
+		board.style.display = "none";
+	}else if(setting ==="on"){
+		board.style.display = "";
+	}
+};
 
 
 
+let gameLogic = new logic();
 
