@@ -39,8 +39,7 @@
  */
 //access to HTML elemetns:
 const board = document.querySelector(".board");
-
-
+let winningSvg = document.querySelector("li .players , .active, svg");
 
 
 
@@ -209,14 +208,15 @@ function endingFork(){
 	toggleGameBoard("off");
 
 	let div = document.createElement("div");
+	if (winningSvg.getAttribute("id", "player1")){
+		winningSvg.querySelector("g g").setAttribute("fill", "orange");
+	}else if (winningSvg.getAttribute("id", "player1")){
 
-	div.backgroundcolor= "green";
-	let winnerImg = document.createElement("img")
-	winnerImg.setAttribute("src", gameLogic.img);
-	winnerImg.setAttribute("color","yellow");
-	div.append(winnerImg);
-	div.style.color="black";
-	document.querySelectorAll("body")[0].append(div);
+	}
+	div.append(winningSvg);
+	
+	document.querySelector("body").append(div);
+
 };
 
 // show or hide the game board (the element with the .board class);
