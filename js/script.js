@@ -209,8 +209,10 @@ function endingFork(){
 
 	let div = document.createElement("div");
 	if (winningSvg.parentNode.getAttribute("id", "player1")){
+		div.style.left = "%50";
+		div.style.right = "%50";
 		winningSvg.querySelector("g g").setAttribute("fill", "orange");
-	}else if (winningSvg.getAttribute("id", "player1")){
+	}else if (winningSvg.getAttribute("id", "player2")){
 
 	}
 	div.append(winningSvg);
