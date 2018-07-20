@@ -40,6 +40,7 @@
 //access to HTML elemetns:
 const board = document.querySelector(".board");
 let winningSvg = document.querySelector("li .players , .active, svg");
+let body = document.querySelector("body");
 
 
 
@@ -208,9 +209,13 @@ function endingFork(){
 	toggleGameBoard("off");
 
 	let div = document.createElement("div");
+	body.style.background="black";
 	if (winningSvg.parentNode.getAttribute("id", "player1")){
-		div.style.left = "%50";
-		div.style.right = "%50";
+		
+		winningSvg.style.display="block";
+		winningSvg.style.marginTop="18%";
+		winningSvg.style.marginLeft ="50%";
+		winningSvg.style.marginRight="50%";
 		winningSvg.querySelector("g g").setAttribute("fill", "orange");
 	}else if (winningSvg.getAttribute("id", "player2")){
 
