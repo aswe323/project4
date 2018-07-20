@@ -39,7 +39,6 @@
  */
 //access to HTML elemetns:
 const board = document.querySelector(".board");
-let winningSvg = document.querySelector("li .players , .active, svg");
 let body = document.querySelector("body");
 
 
@@ -206,22 +205,40 @@ class logic  {
 //game endings fork function here
 
 function endingFork(){
+	///TODO:
+	//	check why player one selected with li element and player 2 isnt. then solve the css conflict by makignsure 
+	//	the element is selected by id for the color change
+	let winCheck = () => {
+		if(gameLogic.player2.className =="players active"){
+		return document.querySelector("#player2, svg");
+		}else if(gameLogic.player1.className =="players active"){
+		return document.querySelector("#player1, svg");
+		}
+	}
+
+	let winningSvg = winCheck();
 	toggleGameBoard("off");
+	body.style.background="black";
+
 
 	let div = document.createElement("div");
-	body.style.background="black";
-	if (winningSvg.parentNode.getAttribute("id", "player1")){
-		
-		winningSvg.style.display="block";
-		winningSvg.style.marginTop="18%";
-		winningSvg.style.marginLeft ="50%";
-		winningSvg.style.marginRight="50%";
+
+	winningSvg.style.display="block";
+	winningSvg.style.marginTop="18%";
+	winningSvg.style.marginLeft ="50%";
+	winningSvg.style.marginRight="50%";
+	winningSvg.setAttribute("class", "winner");	
+
+	if (winningSvg.id ==  "player2"){
+	
+		winningSvg.querySelector("g g").setAttribute("fill", "blue");
+
+	}else if (winningSvg.id ==  "player1"){
+
 		winningSvg.querySelector("g g").setAttribute("fill", "orange");
-	}else if (winningSvg.getAttribute("id", "player2")){
 
 	}
 	div.append(winningSvg);
-	
 	document.querySelector("body").append(div);
 
 };
