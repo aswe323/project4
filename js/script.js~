@@ -205,14 +205,27 @@ class logic  {
 //game endings fork function here
 
 function endingFork(){
+	///TODO:
+	//	check why player one selected with li element and player 2 isnt. then solve the css conflict by makignsure 
+	//	the element is selected by id for the color change
+	let winMessage = document.createElement("p");
 	let winCheck = () => {
 		if(gameLogic.player2.className =="players active"){
-		return document.querySelector("#player2, svg");
+			winMessage.innerText = "winner is X";
+			return document.querySelector("#player2");
 		}else if(gameLogic.player1.className =="players active"){
-		return document.querySelector("#player1, svg");
+			winMessage.innerText = "winner is O";
+			return document.querySelector("#player1, svg");
 		}
 	}
 
+	
+
+	winMessage.style.color = "purple";		
+
+	winMessage.style.marginLeft ="50%";
+	winMessage.style.marginRight="50%";
+	
 	let winningSvg = winCheck();
 	toggleGameBoard("off");
 	body.style.background="black";
@@ -235,6 +248,8 @@ function endingFork(){
 		winningSvg.querySelector("g g").setAttribute("fill", "orange");
 
 	}
+	
+	div.append(winMessage);	
 	div.append(winningSvg);
 	document.querySelector("body").append(div);
 
